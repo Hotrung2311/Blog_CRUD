@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Blog</title>
+</head>
+<body>
+<a th:href="@{/list}">Back to list</a>
+<form method="post" th:action="@{/save-blog}" th:object="${blog}">
+    <th:block th:if="${blog.getId()!=null}">
+        <input type="hidden" th:field="*{id}">
+    </th:block>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <p>Title</p>
+    <input type="text" th:field="*{title}" />
+
+    <p>Content</p>
+    <input type="text" th:field="*{content}" />
+
+    <input type="submit" value="Upload">
+</form>
+</body>
+</html>
